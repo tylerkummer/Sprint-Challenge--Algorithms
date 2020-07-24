@@ -128,6 +128,7 @@ class SortingRobot:
                 if self.compare_item() == -1:
                     # if it is then swap the item the robot is holding with the item right in front of it
                     self.swap_item()
+                    # Comment
 
 
 if __name__ == "__main__":
