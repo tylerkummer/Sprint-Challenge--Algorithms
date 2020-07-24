@@ -106,7 +106,7 @@ class SortingRobot:
         # Have a boolean enter the loop
         while self.light_is_on():
             # Once inside the loop set the boolean to false
-            self.set_light_off
+            self.set_light_off()
             # Check if we can traverse the list going to the right, need a while loop to keep going right if we can
             while self.can_move_right():
                 # Swap our current item with the index we are comparing
@@ -115,20 +115,27 @@ class SortingRobot:
                 self.move_right()
                 # Compare our current item with the following item down the list to see if it is greater since it is on the right, or == 1
                 if self.compare_item() == 1:
-                    # if it is then swap the item the robot is holding with the item right in front of it
+                    # if it is then swap the item the robot is holding with the item in front of it
                     self.swap_item()
+                    # Set boolean to true when swap happens
+                    self.set_light_on()
+            # Empty robots hands with the currently swapped item
+            self.swap_item()
 
-            # Check if we can traverse the list going to the right, need a while loop to keep going right if we can
+            # Check if we can traverse the list going to the left, or back to the beginning
             while self.can_move_left():
                 # Swap our current item with the index on the left
                 self.swap_item()
                 # Move to the left going down the list
                 self.move_left()
-                # Compare our current item with the following item down the list to see if it is less than since it is on the right, or == -1
+                # Compare our current item with the following item down the list to see if it is less than since it is on the left, or == -1
                 if self.compare_item() == -1:
-                    # if it is then swap the item the robot is holding with the item right in front of it
+                    # if it is then swap the item the robot is holding with the item in front of it
                     self.swap_item()
-                    # Comment
+                    # Set boolean to true when swap happens
+                    self.set_light_on()
+            # Empty the robots hands with the currently swapped item
+            self.swap_item()
 
 
 if __name__ == "__main__":
